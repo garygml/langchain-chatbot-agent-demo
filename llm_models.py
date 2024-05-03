@@ -3,11 +3,15 @@ import json
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAI
 from langchain_community.llms import Ollama
 from langchain_community.chat_models import ChatOllama
+from langchain_openai import ChatOpenAI, OpenAI
+
 
 from dotenv import load_dotenv
 # Load .env file
 load_dotenv()
 google_api_key=os.getenv('GOOGLE_API_KEY')
+openai_api_key=os.getenv('OPENAI_API_KEY')
+
 class LlmModels:
 
     def get_default_llm(self):
@@ -48,4 +52,12 @@ class LlmModels:
     def get_chat_ollama_mistral_model(self):
         print("mistral")
         llm = ChatOllama(model="mistral")
+        return llm
+    def get_chat_openai_model(self):
+        print("gpt-3.5-turbo-0125")
+        llm = ChatOpenAI(model="gpt-3.5-turbo-0125", temperature=0)
+        return llm
+    def get_openai_model(self):
+        print("gpt-3.5-turbo-0125")
+        llm = OpenAI(model="gpt-3.5-turbo-0125", temperature=0)
         return llm
