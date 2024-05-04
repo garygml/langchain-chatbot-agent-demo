@@ -20,8 +20,8 @@ class GeneralConversationInput(BaseModel):
     query: Optional[str] = Field(description="user query")
 
 class GeneralConversationTool(BaseTool):
-    name = "GeneralConversation"
-    description = ("useful for processing general conversations. ")
+    name = "GeneralTalk"
+    description = ("useful for answering a generic question not related to customer ")
     args_schema: Type[BaseModel] = GeneralConversationInput
 
     def _run(

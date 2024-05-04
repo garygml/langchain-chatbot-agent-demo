@@ -31,27 +31,27 @@ class LlmModels:
         return llm
     def get_ollama_llama3_model(self):
         print("llama3")
-        llm = Ollama(model="llama3")
+        llm = Ollama(model="llama3",temperature=0)
         return llm
     def get_ollama_llama2_model(self):
         print("llama2")
-        llm = Ollama(model="llama2")
+        llm = Ollama(model="llama2",temperature=0)
         return llm
     def get_ollama_mistral_model(self):
         print("mistral")
-        llm = Ollama(model="mistral")
+        llm = Ollama(model="mistral",temperature=0)
         return llm
     def get_chat_ollama_llama3_model(self):
         print("llama3")
-        llm = ChatOllama(model="llama3")
+        llm = ChatOllama(model="llama3",temperature=0)
         return llm
     def get_chat_ollama_llama2_model(self):
         print("llama2")
-        llm = ChatOllama(model="llama2")
+        llm = ChatOllama(model="llama2",temperature=0)
         return llm
     def get_chat_ollama_mistral_model(self):
         print("mistral")
-        llm = ChatOllama(model="mistral")
+        llm = ChatOllama(model="mistral",temperature=0)
         return llm
     def get_chat_openai_model(self):
         print("gpt-3.5-turbo-0125")

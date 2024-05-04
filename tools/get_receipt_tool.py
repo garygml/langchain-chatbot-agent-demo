@@ -29,19 +29,22 @@ def load_json(account_number: Optional[str]) -> str:
     if len(data_list) == 0:
         return ("No data was found for this customer, return a final answer that you are not able to find "
                 "this information")
-    response = (json.dumps(data_list))
+    response = (json.dumps(data_list[0][0]["page_text"]))
+    # response += (" * GUIDELINE TO UNDERSTAND THE DOCUMENTS: "
+    #              "Each JSON represent a physical pdf receipt and could contain multiple pages "
+    #              "For each page, there are page_number, page_text and file_path information "
+    #              "page_text contains the information of the receipt. "
+    #              )
     return response
 
-class JSONLoadInput(BaseModel):
+class GetReceiptInput(BaseModel):
     account_number: Optional[str] = Field(description="Strictly string value of 9 digit, e.g. 123456789, "
                                                       "pass 1234 if not exist")
 
-class JSONLoadTool(BaseTool):
-    name = "JSONLoad"
-    description = ("useful for getting customer documents in a list of JSON"
-                   "Each JSON represent a physical pdf document and could contain multiple pages"
-                   "For each page, there are page_number, page_text and file_path information")
-    args_schema: Type[BaseModel] = JSONLoadInput
+class GetReceiptTool(BaseTool):
+    name = "CustomerRestaurantReceipt"
+    description = ("useful tool to find the customer restaurant receipt documents")
+    args_schema: Type[BaseModel] = GetReceiptInput
 
     def _run(
             self,
