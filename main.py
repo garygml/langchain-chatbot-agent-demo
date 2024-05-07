@@ -3,8 +3,13 @@ from fastapi.middleware.cors import CORSMiddleware
 from langchain_chatbot import MyLangChainChatBot
 from langchain_agent import agent_executor
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
+from starlette.responses import FileResponse
+
 
 app = FastAPI()
+
+app.mount("/static", StaticFiles(directory="ui/static"), name="static")
 
 origins = [
     "http://localhost",
@@ -21,8 +26,10 @@ app.add_middleware(
 )
 
 @app.get("/")
-async def read_root():
-    return {"Hello": "World"}
+async def ui():
+    response = FileResponse('ui/index.html')
+    return response
+
 
 @app.get("/testChatBot")
 async def testMyLangChainChatBot():

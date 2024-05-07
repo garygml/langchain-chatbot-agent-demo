@@ -12,7 +12,7 @@ from langchain.callbacks.manager import (
     CallbackManagerForToolRun,
 )
 
-response=("If this is a general greeting, return a final answer greeting back. "
+response=("If this is a general greeting, return a final answer and do your greeting. "
           "If this is something that you cannot answer based on the context, "
           "return a final answer stating there is not enough information for you to answer that")
 
